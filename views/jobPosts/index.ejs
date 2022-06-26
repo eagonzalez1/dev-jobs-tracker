@@ -1,0 +1,58 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<section>
+  <h1>Job Posts</h1>
+
+    <% jobPosts.forEach(jobPost => { %>
+      <div class="card">
+        <h5 class="card-header"><%= jobPost.role %></h5>
+        <div class="card-body">
+          <h5 class="card-title"><%= jobPost.companyName %></h5>
+          <p class="card-text"><%= jobPost.sector %></p>
+
+          <% if (jobPost.contacts.length) { %>
+            <p class="card-text">Contacts:</p>
+                <% jobPost.contacts.forEach(function(contact) { %>
+                  <p class="card-text"><%= jobPost.contact.name %></p>
+                  <label>
+                    Contacted?
+                    <input type="checkbox" name="contacted">
+                  </label>
+                  <label>
+                    Replied?
+                    <input type="checkbox" name="replied">
+                  </label>
+                <% }) %>
+          <% } else { %>
+            <h3>No Contacts Yet</h3>
+          <% } %>
+
+          <label>
+            Applied?
+            <input type="checkbox" name="contacted">
+          </label>
+          <p class="card-text">
+            <%= jobPost.applied %>
+          </p>
+          <label>
+            Company Replied?
+            <input type="checkbox" name="contacted">
+          </label>
+          <p class="card-text"><%= jobPost.salaryRange %></p>
+
+          <%# languages required %> 
+
+          <p class="card-text"><%= jobPost.motivation %></p>
+          <p class="card-text"><%= jobPost.notes %></p>
+
+          <a href="<%= jobPost.link %>" class="btn btn-primary">Job Post Link</a>
+        </div>
+      </div>
+
+    <% }) %>
+
+
+</section>
+
+<%- include('../partials/footer') %>

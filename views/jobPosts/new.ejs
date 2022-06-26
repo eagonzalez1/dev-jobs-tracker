@@ -1,0 +1,69 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<section>
+
+
+    <h2>Create a Job Post</h2>
+    <form action="/jobPosts" method="POST">
+      <label>
+        Company Name: 
+        <input type="text" name="companyName" autocomplete="off">
+      </label>
+      <label>
+        Role: 
+        <input type="text" name="role" autocomplete="off">
+      </label>
+      <label>
+        Sector: 
+        <input type="text" name="sector" autocomplete="off">
+      </label>
+      <label>
+        Salary Range: 
+        <input type="text" name="salaryRange" autocomplete="off">
+      </label>
+      <label>Motivation:</label>
+      <select name="motivation" id="motivation-select">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3" selected>3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+      <button type="submit">Add Review</button>
+      <label>
+        Job Post Link: 
+        <input type="text" name="link" autocomplete="off">
+      </label>
+      <label>
+        Notes: 
+        <input type="text" name="notes" autocomplete="off">
+      </label>
+      <label>
+        Applied?
+        <input 
+          type="checkbox" 
+          name="application"
+        >
+      </label>
+      <label>
+        Application Date
+        <input 
+          type="datetime-local" 
+          name="applied"
+        >
+      </label>
+      <label>
+        Replied?
+        <input 
+          type="checkbox" 
+          name="application"
+        >
+      </label>
+      <button type="submit">Add Job Post</button>
+    </form>
+
+
+</section>
+
+<%- include('../partials/footer') %>

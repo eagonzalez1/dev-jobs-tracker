@@ -33,13 +33,10 @@ function create(req, res) {
   req.body.appReply = !!req.body.appReply
   JobPost.create(req.body)
   .then(jobPost => {
-    console.log(`new id ${jobPost._id}`)
     Profile.findById(req.user.profile._id)
     .then(profile => {
-      console.log(`new2 id ${jobPost._id}`)
       profile.jobPosts.push(jobPost._id)
       profile.save()
-      console.log(profile)
     })
     res.redirect('/profiles')
   })
@@ -50,7 +47,22 @@ function create(req, res) {
 }
 
 function deleteJobPost (req, res) {
-  console.log('delete buttomg works')
+  //delete id from the profile jobPost array
+  Profile.findById(req.user.profile._id)
+    .then(profile => {
+      console.log(req.params.id)
+      profile.jobPosts.deleteOne({"_id" : ObjectId(req.params.id)})
+
+
+      // const post = profile.jobPosts.filter(post => profile.jobPosts._id === req.params.id)
+      // console.log(post)
+    })
+    res.redirect('/profiles')
+  .catch(err => {
+    console.log(err)
+    res.redirect('/jobPosts')
+  })
+  console.log(req.params.id)
 }
 
 

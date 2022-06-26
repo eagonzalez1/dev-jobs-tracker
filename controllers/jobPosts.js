@@ -49,9 +49,14 @@ function create(req, res) {
   })
 }
 
+function deleteJobPost (req, res) {
+  console.log('delete buttomg works')
+}
+
 
 export {
   index,
   create,
   newJobPost as new,
+  deleteJobPost as delete,
 }

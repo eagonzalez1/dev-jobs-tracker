@@ -3,15 +3,17 @@ import { Profile } from '../models/profile.js'
 
 
 function index(req, res) {
-  console.log('test321')
-  console.log(req.user.profile._id)
   Profile.findById(req.user.profile._id)
-
-  .then(jobPosts => {
-  res.render('profiles/index', {
-      jobPosts,
-      title: "Job Posts",
-      user: req.user ? req.user : null
+  .populate('jobPosts')
+  .then(profile => {
+    JobPost.find({_id: {$in: profile.jobPosts}})
+    .then(jobPosts => {
+      res.render('profiles/index', {  
+        profile,
+        jobPosts,
+        title: "Job Posts",
+        user: req.user ? req.user : null
+      })
     })
   })
   .catch(err => {

@@ -1,4 +1,5 @@
 import { JobPost } from '../models/jobPost.js'
+import { Profile } from '../models/profile.js'
 
 
 function index(req, res) {
@@ -28,13 +29,19 @@ function newJobPost(req, res) {
 }
 
 function create(req, res) {
-  console.log('test123')
-
 	req.body.application = !!req.body.application
   req.body.appReply = !!req.body.appReply
   JobPost.create(req.body)
   .then(jobPost => {
-    res.redirect('/jobPosts')
+    console.log(`new id ${jobPost._id}`)
+    Profile.findById(req.user.profile._id)
+    .then(profile => {
+      console.log(`new2 id ${jobPost._id}`)
+      profile.jobPosts.push(jobPost._id)
+      profile.save()
+      console.log(profile)
+    })
+    res.redirect('/profiles')
   })
   .catch(err => {
     console.log(err)

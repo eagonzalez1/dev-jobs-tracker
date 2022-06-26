@@ -10,6 +10,9 @@ router.get('/', isLoggedIn, jobPostCtrl.index)
 // localhost:3000/jobPosts/new
 router.get('/new', isLoggedIn, jobPostCtrl.new)
 
+// GET localhost:3000/jobPosts/:id/edit
+router.get('/:id/edit', isLoggedIn, jobPostCtrl.edit)
+
 // POST localhost:3000/jobPosts
 router.post('/', isLoggedIn, jobPostCtrl.create)
 

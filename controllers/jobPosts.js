@@ -47,22 +47,23 @@ function create(req, res) {
 }
 
 function deleteJobPost (req, res) {
-  //delete id from the profile jobPost array
+  JobPost.findById(req.params.id).then(post => {post.delete()})
   Profile.findById(req.user.profile._id)
     .then(profile => {
-      console.log(req.params.id)
-      profile.jobPosts.deleteOne({"_id" : ObjectId(req.params.id)})
-
-
-      // const post = profile.jobPosts.filter(post => profile.jobPosts._id === req.params.id)
-      // console.log(post)
+      profile.jobPosts.remove({_id: req.params.id})
+      profile.save()
+      .then(()=> {
+        res.redirect('/profiles')
+      })
     })
-    res.redirect('/profiles')
-  .catch(err => {
+    .catch(err => {
     console.log(err)
     res.redirect('/jobPosts')
   })
-  console.log(req.params.id)
+}
+
+function edit(req, res) {
+  console.log("Gonna update movies!")
 }
 
 
@@ -71,4 +72,24 @@ export {
   create,
   newJobPost as new,
   deleteJobPost as delete,
+  edit,
 }
+
+
+
+// JobPost.findById(req.params.id)
+// .then(jobPost => {
+  
+// })
+
+
+  // //delete id from the profile jobPost array
+  // Profile.findById(req.user.profile._id)
+  //   .then(profile => {
+  //     console.log(req.params.id)
+  //     profile.jobPosts.deleteOne({"_id" : ObjectId(req.params.id)})
+
+
+  //     // const post = profile.jobPosts.filter(post => profile.jobPosts._id === req.params.id)
+  //     // console.log(post)
+  //   })

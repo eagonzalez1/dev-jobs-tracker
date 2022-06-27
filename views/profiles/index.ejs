@@ -27,6 +27,7 @@
                     method="POST">
                     <p class="card-text"><%= contact.name %></p>
                     <label>
+
                       Contacted?
                       <input type="checkbox" name="contacted">
                     </label>
@@ -34,12 +35,14 @@
                       Replied?
                       <input type="checkbox" name="replied">
                     </label>
+                    <button 
+                    type="submit">Update</button>
                   </form>
                   <form 
                     action="/jobPosts/<%= jobPost._id %>/contacts/<%= contact._id %>?_method=DELETE" 
                     method="POST">
                     <button 
-                    class="delete-button">X</button>
+                    type="submit">X</button>
                   </form>
                 <% }) %>
           <% } else { %>

@@ -111,11 +111,28 @@ function deleteContact(req, res) {
     jobPost.contacts = jobPost.contacts.filter(contact => {
       return contact._id.toString() !== req.params.contactId
     })
-    console.log(jobPost)
     jobPost.save()
     .then(() => {
       res.redirect('/profiles')
     })
+  })
+  .catch(error => {
+    console.log(error)
+    res.redirect('/jobPosts')
+  })
+}
+
+function updateContact(req, res) {
+  req.body.contacted = !!req.body.contacted
+  req.body.replied = !!req.body.replied
+  JobPost.findById(req.params.id)
+  .then(jobPost => {
+    jobPost.contact = jobPost.contacts.filter(contact => {
+      return contact._id.toString() === req.params.contactId
+    })
+    jobPost.contact.contacted = req.body.contacted
+    jobPost.contact.replied = req.body.replied
+    console.log(jobPost.contact)
   })
   .catch(error => {
     console.log(error)
@@ -132,7 +149,8 @@ export {
   edit,
   update,
   createContact,
-  deleteContact
+  deleteContact,
+  updateContact
 }
 
 

@@ -1,0 +1,50 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<main>
+
+  <h1><%= title %></h1>
+  <form id="new-form" action="/jobPosts/<%= jobPost._id %>?_method=PUT" method="POST">
+    <label>
+      Company Name: 
+      <input type="text" 
+      name="companyName" 
+      autocomplete="off"
+      value="<%= jobPost.companyName %>">
+    </label>
+    <label>
+      Role: 
+      <input 
+      type="text" 
+      name="role" 
+      autocomplete="off"
+      value="<%= jobPost.role %>">
+    </label>
+    <label>
+      Sector: 
+      <input type="text" 
+      name="sector" 
+      autocomplete="off"
+      value="<%= jobPost.sector %>">
+    </label>
+    <label>
+      Salary Range: 
+      <input type="text" 
+      name="salaryRange" 
+      autocomplete="off"
+      value="<%= jobPost.salaryRange %>">
+    </label>
+    <label>
+      Job Post Link: 
+      <input type="text" 
+      name="link" 
+      autocomplete="off"
+      value="<%= jobPost.link %>">
+    </label>
+    <button type="submit">Edit Job Post</button>
+  </form>
+
+
+  </main>
+
+<%- include('../partials/footer') %>

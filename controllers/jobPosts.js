@@ -63,7 +63,17 @@ function deleteJobPost (req, res) {
 }
 
 function edit(req, res) {
-  console.log("Gonna update movies!")
+  JobPost.findById(req.params.id)
+  .then(jobPost => {
+    res.render("jobPosts/edit", {
+      jobPost,
+      title: "Edit Job Post"
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect("/")
+  })
 }
 
 

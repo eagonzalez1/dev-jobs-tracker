@@ -18,32 +18,41 @@
               <input 
               name="name"
               type="text"
-              placeholder="First Last"
+              placeholder="Contact Name"
               >
               <button type="submit">Add Contact</button>
             </form>
                 <% jobPost.contacts.forEach(function(contact) { %>
-                  <p class="card-text"><%= contact.name %></p>
-                  <label>
-                    Contacted?
-                    <input type="checkbox" name="contacted">
-                  </label>
-                  <label>
-                    Replied?
-                    <input type="checkbox" name="replied">
-                  </label>
+                  <form action="/jobPosts/<%= jobPost._id %>/contacts/<%= contact._id %>?_method=PUT"
+                    method="POST">
+                    <p class="card-text"><%= contact.name %></p>
+                    <label>
+                      Contacted?
+                      <input type="checkbox" name="contacted">
+                    </label>
+                    <label>
+                      Replied?
+                      <input type="checkbox" name="replied">
+                    </label>
+                  </form>
+                  <form 
+                    action="/jobPosts/<%= jobPost._id %>/contacts/<%= contact._id %>?_method=DELETE" 
+                    method="POST">
+                    <button 
+                    class="delete-button">X</button>
+                  </form>
                 <% }) %>
           <% } else { %>
-            <form action="/jobPosts/<%= jobPost._id %>/contacts"
-            method="POST">
-            <input 
-            name="name"
-            type="text"
-            placeholder="First Last"
-            >
-            <button type="submit">Add Contact</button>
-          </form>
             <h5>No Contacts Yet</h5>
+            <form action="/jobPosts/<%= jobPost._id %>/contacts"
+              method="POST">
+              <input 
+              name="name"
+              type="text"
+              placeholder="Contact Name"
+              >
+              <button type="submit">Add Contact</button>
+            </form>
           <% } %>
           <hr>
           <label>

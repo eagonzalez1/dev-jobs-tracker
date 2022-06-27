@@ -25,6 +25,12 @@ router.delete('/:id', jobPostCtrl.delete)
 // PUT -- localhost:3000/jobPosts/:id
 router.put('/:id', jobPostCtrl.update)
 
+// DELETE -- localhost:3000/:id
+router.delete('/:id/contacts/:contactId', jobPostCtrl.deleteContact)
+
+// // PUT -- localhost:3000/jobPosts/:id
+// router.put('/:id', jobPostCtrl.update)
+
 export {
   router
 }

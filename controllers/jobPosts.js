@@ -105,6 +105,24 @@ function createContact(req, res) {
   })
 }
 
+function deleteContact(req, res) {
+  JobPost.findById(req.params.id)
+  .then(jobPost => {
+    jobPost.contacts = jobPost.contacts.filter(contact => {
+      return contact._id.toString() !== req.params.contactId
+    })
+    console.log(jobPost)
+    jobPost.save()
+    .then(() => {
+      res.redirect('/profiles')
+    })
+  })
+  .catch(error => {
+    console.log(error)
+    res.redirect('/jobPosts')
+  })
+}
+
 
 export {
   index,
@@ -114,6 +132,7 @@ export {
   edit,
   update,
   createContact,
+  deleteContact
 }
 
 

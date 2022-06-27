@@ -3,13 +3,6 @@
 
 <main>
 	<h1><%= title %></h1>
-  <p>Please first ensure that the language is not in the dropdown
-    <select>
-      <% languages.forEach(function(language) { %>
-        <option><%= language.name %></option>
-      <% }) %>
-    </select>
-  </p>
   <form id="add-language-form" action="/languages" method="POST">
     <label for="name-input">Name:</label>
     <input type="text" name="name" id="name-input">
@@ -17,6 +10,19 @@
     <input type="checkbox" name="proficient" id="proficient-input" checked>
     <button type="submit">Add language</button>
   </form>
+  <h4>Languages:
+      <% languages.forEach(function(language) { %>
+        <p><%= language.name %> <%= language.proficient ? 'proficient' : 'not proficient' %></p>
+        <form 
+        action="/languages/<%= language._id %>/flip-proficient?_method=PATCH"
+        method="POST"
+      >
+        <button class="btn" type="submit">
+          Make <%= language.proficient ? 'not proficient' : 'proficient' %> 
+        </button>
+      </form>
+      <% }) %>
+      
 </main>
 
 <%- include('../partials/footer') %>

@@ -7,6 +7,11 @@ const router = Router()
 // localhost:3000/languages/new
 router.get('/new', isLoggedIn, languagesCtrl.new)
 
+// localhost:3000/languages/new
+router.post('/', isLoggedIn, languagesCtrl.create)
+
+// PATCH localhost:3000/languages/:id/flip-proficient
+router.patch('/:id/flip-proficient', isLoggedIn, languagesCtrl.flipProficient)
 
 export {
   router

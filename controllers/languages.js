@@ -1,5 +1,6 @@
 import { Language } from '../models/language.js'
 import { JobPost } from '../models/jobPost.js'
+import { Profile } from '../models/profile.js'
 
 
 // function index(req, res) {
@@ -31,23 +32,43 @@ function newLanguage(req, res) {
   })
 }
 
-// function create(req, res) {
-// 	req.body.application = !!req.body.application
-//   req.body.appReply = !!req.body.appReply
-//   JobPost.create(req.body)
-//   .then(jobPost => {
-//     Profile.findById(req.user.profile._id)
-//     .then(profile => {
-//       profile.jobPosts.push(jobPost._id)
-//       profile.save()
-//     })
-//     res.redirect('/profiles')
-//   })
-//   .catch(err => {
-//     console.log(err)
-//     res.redirect('/profiles')
-//   })
-// }
+function create(req, res) {
+  console.log(req.body)
+	req.body.proficient = !!req.body.proficient
+  Language.create(req.body)
+  .then(language => {
+    Profile.findById(req.user.profile._id)
+    .then(profile => {
+      profile.languagues.push(language._id)
+      profile.save()
+    })
+    res.redirect('/profiles')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/profiles')
+  })
+}
+
+
+
+function flipProficient(req, res) {
+  Language.findById(req.params.id)
+  .then(language => {
+    language.proficient = !language.proficient
+    language.save()
+    .then(() => {
+      res.redirect('/languages/new')
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/profiles')
+  })
+}
+
+
+
 
 // function deleteJobPost (req, res) {
 //   JobPost.findById(req.params.id).then(post => {post.delete()})
@@ -98,8 +119,9 @@ function newLanguage(req, res) {
 
 export {
   newLanguage as new,
+  create,
+  flipProficient
   // index,
-  // create,
   // deleteJobPost as delete,
   // edit,
   // update,

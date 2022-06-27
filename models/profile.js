@@ -6,7 +6,7 @@ const profileSchema = new mongoose.Schema({
   name: String,
   avatar: String,
   jobPosts: [{type: Schema.Types.ObjectId, ref: 'JobPost'}],
-  languagues: [{type: Schema.Types.ObjectId, ref: "Languages"}]
+  languagues: [{type: Schema.Types.ObjectId, ref: "Language"}]
 }, {
   timestamps: true
 })

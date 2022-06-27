@@ -20,7 +20,7 @@ import { router as indexRouter } from './routes/index.js'
 import { router as authRouter } from './routes/auth.js'
 import { router as jobPostsRouter } from './routes/jobPosts.js'
 import { router as profilesRouter } from './routes/profiles.js'
-import { router as languageRouter } from './routes/languages.js'
+import { router as languagesRouter } from './routes/languages.js'
 
 // create the express app
 const app = express()

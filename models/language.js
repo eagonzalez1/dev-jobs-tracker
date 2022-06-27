@@ -2,7 +2,6 @@ import mongoose from 'mongoose'
 
 const Schema = mongoose.Schema
 
-
 const languageSchema = new Schema({
   name: String,
   proficient: Boolean,
@@ -10,7 +9,7 @@ const languageSchema = new Schema({
   timestamps: true
 })
 
-const Language = mongoose.model('JobPost', jobPostSchema)
+const Language = mongoose.model('Language', languageSchema)
 
 export {
   Language

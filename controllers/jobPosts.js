@@ -18,7 +18,6 @@ function index(req, res) {
 }
 
 function newJobPost(req, res) {
-
   res.render("jobPosts/new", {
     title: "Add Job Post",
   })
@@ -118,25 +117,7 @@ function deleteContact(req, res) {
   })
   .catch(error => {
     console.log(error)
-    res.redirect('/jobPosts')
-  })
-}
-
-function updateContact(req, res) {
-  req.body.contacted = !!req.body.contacted
-  req.body.replied = !!req.body.replied
-  JobPost.findById(req.params.id)
-  .then(jobPost => {
-    jobPost.contact = jobPost.contacts.filter(contact => {
-      return contact._id.toString() === req.params.contactId
-    })
-    jobPost.contact.contacted = req.body.contacted
-    jobPost.contact.replied = req.body.replied
-    console.log(jobPost.contact)
-  })
-  .catch(error => {
-    console.log(error)
-    res.redirect('/jobPosts')
+    res.redirect('/profiles')
   })
 }
 
@@ -149,8 +130,7 @@ export {
   edit,
   update,
   createContact,
-  deleteContact,
-  updateContact
+  deleteContact
 }
 
 

@@ -18,8 +18,12 @@ import { JobPost } from '../models/jobPost.js'
 // }
 
 function newLanguage(req, res) {
-  res.render("languages/new", {
-    title: "Add Language",
+  Language.find({})
+  .then(languages => {
+    res.render("languages/new", {
+      title: "Manage Languages",
+      languages
+    })
   })
   .catch(err => {
     console.log(err)

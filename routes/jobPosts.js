@@ -19,6 +19,9 @@ router.post('/', isLoggedIn, jobPostCtrl.create)
 // DELETE -- localhost:3000/:id
 router.delete('/:id', jobPostCtrl.delete)
 
+// PUT -- localhost:3000/jobPosts/:id
+router.put('/:id', jobPostCtrl.update)
+
 export {
   router
 }

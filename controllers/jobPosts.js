@@ -24,7 +24,7 @@ function newJobPost(req, res) {
   })
   .catch(err => {
     console.log(err)
-    res.redirect('/jobPosts')
+    res.redirect('/profiles')
   })
 }
 
@@ -42,7 +42,7 @@ function create(req, res) {
   })
   .catch(err => {
     console.log(err)
-    res.redirect('/jobPosts')
+    res.redirect('/profiles')
   })
 }
 
@@ -58,7 +58,7 @@ function deleteJobPost (req, res) {
     })
     .catch(err => {
     console.log(err)
-    res.redirect('/jobPosts')
+    res.redirect('/profiles')
   })
 }
 
@@ -76,6 +76,20 @@ function edit(req, res) {
   })
 }
 
+function update(req, res) {
+  for (let key in req.body) {
+    if(req.body[key] === "") delete req.body[key]
+  }
+  JobPost.findByIdAndUpdate(req.params.id, req.body, {new: true})
+  .then(jobPost => {
+    res.redirect('/profiles')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect("/")
+  })
+}
+
 
 export {
   index,
@@ -83,6 +97,7 @@ export {
   newJobPost as new,
   deleteJobPost as delete,
   edit,
+  update,
 }
 
 

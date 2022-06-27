@@ -23,7 +23,7 @@ const jobPostSchema = new Schema({
   applied: Date,
   appReply: Boolean,
   contacts: [contactsSchema],
-  reqLanguagues: {type: Schema.Types.ObjectId, ref: "Languages"}
+  reqLanguagues: [{type: Schema.Types.ObjectId, ref: "Languages"}]
 }, {
   timestamps: true
 })
@@ -33,11 +33,3 @@ const JobPost = mongoose.model('JobPost', jobPostSchema)
 export {
   JobPost
 }
-
-
-
-// jobPosts.companyName
-// jobPosts.role
-
-
-

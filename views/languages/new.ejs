@@ -1,0 +1,20 @@
+<%- include('../partials/html-head') %>
+<%- include('../partials/nav') %>
+
+<main>
+	<h1><%= title %></h1>
+  <p>Please first ensure that the language is not in the dropdown
+    <select>
+      <% languages.forEach(function(language) { %>
+        <option><%= language.name %></option>
+      <% }) %>
+    </select>
+  </p>
+  <form id="add-language-form" action="/languages" method="POST">
+    <label for="name-input">Name:</label>
+    <input type="text" name="name" id="name-input">
+    <button type="submit">Add language</button>
+  </form>
+</main>
+
+<%- include('../partials/footer') %>

@@ -9,10 +9,15 @@
         <h5 class="card-header"><%= jobPost.role %></h5>
         <div class="card-body">
           <h5 class="card-title"><%= jobPost.companyName %></h5>
-          <p class="card-text"><%= jobPost.sector %></p>
-
+          <p class="card-text">Sector: <%= jobPost.sector %></p>
+          <hr>
           <% if (jobPost.contacts.length) { %>
             <p class="card-text">Contacts:</p>
+            <form action="">
+              <input type="text">
+              <input type="text">
+              <button type="submit">Add Contact</button>
+            </form>
                 <% jobPost.contacts.forEach(function(contact) { %>
                   <p class="card-text"><%= jobPost.contact.name %></p>
                   <label>
@@ -25,9 +30,14 @@
                   </label>
                 <% }) %>
           <% } else { %>
+            <form action="">
+              <input type="text">
+              <input type="text">
+              <button type="submit">Add Contact</button>
+            </form>
             <h3>No Contacts Yet</h3>
           <% } %>
-
+          <hr>
           <label>
             Applied?
             <input type="checkbox" name="contacted">
@@ -61,6 +71,8 @@
         </div>
       </div>
     <% }) %>
+    <% } else { %>
+      <h3>No Job Posts Yet</h3>
     <% } %>
 </section>
 

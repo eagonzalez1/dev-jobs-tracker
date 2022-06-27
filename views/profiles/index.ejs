@@ -49,11 +49,12 @@
             Date Sent: <%= jobPost.applied.toLocaleDateString() %>
           </p>
           <label>
-          <p class="card-text"><%= jobPost.salaryRange %></p>
+          <p class="card-text">Salary Range: <%= jobPost.salaryRange %></p>
 
           <%# languages required %> 
 
-          <p class="card-text"><%= jobPost.motivation %></p>
+          <p class="card-text">Motivation: <%= jobPost.motivation %></p>
+          <p>Notes:</p>
           <p class="card-text"><%= jobPost.notes %></p>
 
           <a href="<%= jobPost.link %>" class="btn btn-primary">Job Post Link</a>

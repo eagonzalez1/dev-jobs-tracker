@@ -41,12 +41,28 @@
       autocomplete="off"
       value="<%= jobPost.link %>">
     </label>
+    <select name="motivation" id="motivation-select">
+      <option value="<%= jobPost.motivation %>" selected><%= jobPost.motivation %></option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+      <option value="3">3</option>
+      <option value="4">4</option>
+      <option value="5">5</option>
+    </select>
     <label>
       Date Appplied: 
       <input type="date" 
       name="applied" 
       autocomplete="off"
       value="<%= jobPost.applied %>">
+    </label>
+    <label>
+      Notes: 
+      <input 
+      type="text" 
+      name="notes" 
+      autocomplete="off"
+      value="<%= jobPost.notes %>">
     </label>
     <button type="submit">Edit Job Post</button>
   </form>

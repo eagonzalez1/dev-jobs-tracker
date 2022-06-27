@@ -16,6 +16,9 @@ router.get('/:id/edit', isLoggedIn, jobPostCtrl.edit)
 // POST localhost:3000/jobPosts
 router.post('/', isLoggedIn, jobPostCtrl.create)
 
+// POST localhost:3000/jobPosts/:id/contacts
+router.post('/:id/contacts', isLoggedIn, jobPostCtrl.createContact)
+
 // DELETE -- localhost:3000/:id
 router.delete('/:id', jobPostCtrl.delete)
 

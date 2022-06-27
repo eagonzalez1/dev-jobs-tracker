@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 const Schema = mongoose.Schema
 
 const contactsSchema = new mongoose.Schema({
-  name: {type: String},
+  name: String,
   contacted: Boolean,
   replied: Boolean
 }, {

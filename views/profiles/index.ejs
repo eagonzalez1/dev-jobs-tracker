@@ -12,14 +12,18 @@
           <p class="card-text">Sector: <%= jobPost.sector %></p>
           <hr>
           <% if (jobPost.contacts.length) { %>
-            <p class="card-text">Contacts:</p>
-            <form action="">
-              <input type="text">
-              <input type="text">
+            <h5 class="card-title">Contacts:</h5>
+            <form action="/jobPosts/<%= jobPost._id %>/contacts"
+              method="POST">
+              <input 
+              name="name"
+              type="text"
+              placeholder="First Last"
+              >
               <button type="submit">Add Contact</button>
             </form>
                 <% jobPost.contacts.forEach(function(contact) { %>
-                  <p class="card-text"><%= jobPost.contact.name %></p>
+                  <p class="card-text"><%= contact.name %></p>
                   <label>
                     Contacted?
                     <input type="checkbox" name="contacted">
@@ -30,12 +34,16 @@
                   </label>
                 <% }) %>
           <% } else { %>
-            <form action="">
-              <input type="text">
-              <input type="text">
-              <button type="submit">Add Contact</button>
-            </form>
-            <h3>No Contacts Yet</h3>
+            <form action="/jobPosts/<%= jobPost._id %>/contacts"
+            method="POST">
+            <input 
+            name="name"
+            type="text"
+            placeholder="First Last"
+            >
+            <button type="submit">Add Contact</button>
+          </form>
+            <h5>No Contacts Yet</h5>
           <% } %>
           <hr>
           <label>

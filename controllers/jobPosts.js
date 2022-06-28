@@ -62,28 +62,29 @@ function deleteJobPost (req, res) {
   })
 }
 
-// function edit(req, res) {
-//   Profile.findById(req.user.profile._id)
-//   .then(profile => {
-//     console.log(profile)
-//     Language.find({_id: {$in: profile.languages}})
-//     .then(languages => {
-//       JobPost.findById(req.params.id)
-//       .then(jobPost => {
-//         res.render('jobPosts/edit', {  
-//           profile,
-//           languages,
-//           jobPost,
-//           title: "Edit Job Post",
-//         })
-//       })
-//     })
-//   })
-//   .catch(err => {
-//     console.log(err)
-//     res.redirect('/profiles')
-//   })
-// }
+function edit(req, res) {
+  Profile.findById(req.user.profile._id)
+  .then(profile => {
+    console.log(profile)
+    Language.find({_id: {$in: profile.languages}})
+    .then(languages => {
+      JobPost.findById(req.params.id)
+      .then(jobPost => {
+        console.log(languages)
+        res.render('jobPosts/edit', { 
+          profile,
+          languages,
+          jobPost,
+          title: "Edit Job Post",
+        })
+      })
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/profiles')
+  })
+}
 
 // function edit(req, res) {
 //   Profile.findById(req.user.profile._id)

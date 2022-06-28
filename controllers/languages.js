@@ -18,6 +18,26 @@ import { Profile } from '../models/profile.js'
 //   })
 // }
 
+function index(req, res) {
+  Profile.findById(req.user.profile._id)
+  .populate('languages')
+  .then(profile => {
+    Language.find({_id: {$in: profile.languages}})
+    .then(jobPosts => {
+      res.render('profiles/index', {  
+        profile,
+        jobPosts,
+        title: "Job Posts",
+        user: req.user ? req.user : null
+      })
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect("/")
+  })
+}
+
 function newLanguage(req, res) {
   Language.find({})
   .then(languages => {
@@ -39,7 +59,7 @@ function create(req, res) {
   .then(language => {
     Profile.findById(req.user.profile._id)
     .then(profile => {
-      profile.languagues.push(language._id)
+      profile.languages.push(language._id)
       profile.save()
     })
     res.redirect('/languages/new')

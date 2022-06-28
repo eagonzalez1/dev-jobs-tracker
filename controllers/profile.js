@@ -1,5 +1,6 @@
 import { JobPost } from '../models/jobPost.js'
 import { Profile } from '../models/profile.js'
+import { Language } from '../models/language.js'
 
 
 function index(req, res) {

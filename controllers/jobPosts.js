@@ -1,5 +1,6 @@
 import { JobPost } from '../models/jobPost.js'
 import { Profile } from '../models/profile.js'
+import { Language } from '../models/language.js'
 
 
 function index(req, res) {
@@ -62,11 +63,21 @@ function deleteJobPost (req, res) {
 }
 
 function edit(req, res) {
-  JobPost.findById(req.params.id)
-  .then(jobPost => {
-    res.render("jobPosts/edit", {
-      jobPost,
-      title: "Edit Job Post"
+  
+  Profile.findById(req.user.profile._id)
+  .then(profile => {
+    Language.find({})
+    .then(languages => {
+      console.log(languages)
+      JobPost.findById(req.params.id)
+      .then(jobPost => {
+        res.render("jobPosts/edit", {
+          profile,
+          jobPost,
+          languages,
+          title: "Edit Job Post"
+        })
+      })
     })
   })
   .catch(err => {

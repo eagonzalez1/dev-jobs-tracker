@@ -42,7 +42,7 @@ function create(req, res) {
       profile.languagues.push(language._id)
       profile.save()
     })
-    res.redirect('/profiles')
+    res.redirect('/languages/new')
   })
   .catch(err => {
     console.log(err)

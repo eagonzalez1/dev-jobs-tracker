@@ -64,6 +64,12 @@
       autocomplete="off"
       value="<%= jobPost.notes %>">
     </label>
+    
+    <% languages.forEach(language => { %>
+      <p><%= language.name %></p>
+    <% }) %>
+
+
     <button type="submit">Edit Job Post</button>
   </form>
 

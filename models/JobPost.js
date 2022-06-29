@@ -10,7 +10,6 @@ const contactsSchema = new mongoose.Schema({
   timestamps: true
 })
 
-
 const jobPostSchema = new Schema({
   companyName: String,
   role: String,

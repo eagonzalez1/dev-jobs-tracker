@@ -2,7 +2,7 @@
 <%- include('./partials/nav') %>
 
 <main>
-  <h1>hello, <%= user ? user.profile.name : "friend" %></h1>
+  <h1><%= user ? user.profile.name : "Welcome to devJobTracker! Log in to track job posts." %></h1>
   <% if (user?.profile.avatar) { %>
     <div>
       <img
@@ -11,22 +11,6 @@
       />
     </div>
   <% } %>
-
-
-
-
-    <%# insert the taco.cat forEach thing for each job below to surround the card %> 
-
-  <div class="card">
-    <div class="card-header">
-      Featured
-    </div>
-    <div class="card-body">
-      <h5 class="card-title">Special title treatment</h5>
-      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
-    </div>
-  </div>
 </main>
 
 <%- include('./partials/footer') %>

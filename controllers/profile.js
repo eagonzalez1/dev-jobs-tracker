@@ -1,7 +1,5 @@
 import { JobPost } from '../models/jobPost.js'
 import { Profile } from '../models/profile.js'
-import { Language } from '../models/language.js'
-
 
 function index(req, res) {
   Profile.findById(req.user.profile._id)
@@ -38,8 +36,6 @@ function index(req, res) {
     res.redirect("/")
   })
 }
-
-
 
 export {
   index,

@@ -13,22 +13,23 @@ html {
 
 /* resets font size to be 62.5% of the user preference - in most browser configurations this will be 10px */
 :root {
-  font-size: 62.5%;
+
 }
 
+
+
 body {
-  background-color: gray;
+  background-image: linear-gradient(to right bottom, #faedcd, #f7edcc, #f4edcb, #f1edcb, #eeedca, #eaebc7, #e6e9c5, #e2e7c2, #dde2bd, #d7deb8, #d2d9b3, #ccd5ae);
   /* Use a system font, if none are available use an available sans-sarif font */
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
-    Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri Light, 'Trebuchet MS', sans-serif;
   margin: 0;
 }
 
 nav {
-  background-color: red;
-  font-size: 1.6rem;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 main {
@@ -38,6 +39,25 @@ main {
   flex-direction: column;
 }
 
+.nav-btn {
+  background-color: lightgray;
+  color: red;
+}
+
 h1 {
   font-size: 3.6rem;
+}
+
+
+
+@media only screen and (min-width: 576px) {
+
+  nav {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+
 }

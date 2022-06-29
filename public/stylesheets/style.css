@@ -19,10 +19,12 @@ html {
 
 
 body {
-  background-image: linear-gradient(to right bottom, #faedcd, #f7edcc, #f4edcb, #f1edcb, #eeedca, #eaebc7, #e6e9c5, #e2e7c2, #dde2bd, #d7deb8, #d2d9b3, #ccd5ae);
-  /* Use a system font, if none are available use an available sans-sarif font */
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri Light, 'Trebuchet MS', sans-serif;
-  margin: 0;
+  margin: 5px;
+  background: linear-gradient(to right bottom, #faedcd, #f7edcc, #f4edcb, #f1edcb, #eeedca, #eaebc7, #e6e9c5, #e2e7c2, #dde2bd, #d7deb8, #d2d9b3, #ccd5ae);
+  /* Use a system font, if none are available use an available sans-sarif font */
+  background-size: cover;
+  height: 100%;
 }
 
 nav {
@@ -30,6 +32,7 @@ nav {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  margin: 10px auto;
 }
 
 main {
@@ -40,15 +43,77 @@ main {
 }
 
 .nav-btn {
-  background-color: lightgray;
-  color: red;
+  background-color: #184E77;
+  color: #D9ED92;
+  border-radius: 8px;
+  margin-bottom: 5px;
 }
 
 h1 {
-  font-size: 3.6rem;
+  font-size: 30px;
+  text-align: center;
 }
 
+.cardContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin: 20px;
+  max-width: 1600px;
+}
 
+.card {
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 10px;
+  color: black;
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 10% 80% 10%;
+  grid-column-gap: 8px;
+  grid-row-gap: 13px;
+}
+
+  
+  /* .div1 { grid-area: 1 / 1 / 2 / 3; }
+  .div2 { grid-area: 2 / 1 / 3 / 2; }
+  .div3 { grid-area: 2 / 2 / 3 / 3; }
+  .div4 { grid-area: 3 / 1 / 4 / 3; } */
+
+.card-header {
+  grid-column-end: span 2;
+  font-size: 24px;
+  margin: 0 10px;
+  text-align: center;
+}
+
+.card-company {
+  font-size: 18px;
+}
+
+h5 {
+  margin: 0;
+}
+
+.delete-btn {
+  background-color: rgb(227, 164, 164);
+  color: black;
+  border-radius: 8px;
+  margin-bottom: 5px;
+}
+
+.edit-btn {
+  background-color: lightgray;
+  color: black;
+  border-radius: 8px;
+  margin-bottom: 5px;
+}
+
+#card-buttons {
+  grid-column-end: span 2;
+}
 
 @media only screen and (min-width: 576px) {
 

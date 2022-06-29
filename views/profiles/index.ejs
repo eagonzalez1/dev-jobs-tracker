@@ -4,78 +4,90 @@
 <section>
   <h1>Job Posts</h1>
   <% if (profile.jobPosts.length)  {%>
-    <% profile.jobPosts.forEach(jobPost => { %>
-      <div class="card">
-        <h5 class="card-header"><%= jobPost.role %></h5>
-        <div class="card-body">
-          <h5 class="card-title"><%= jobPost.companyName %></h5>
-          <p class="card-text">Sector: <%= jobPost.sector %></p>
-          <hr>
-          <% if (jobPost.contacts.length) { %>
-            <h5 class="card-title">Contacts:</h5>
-            <form action="/jobPosts/<%= jobPost._id %>/contacts"
-              method="POST">
-              <input 
-              name="name"
-              type="text"
-              placeholder="Contact Name"
+    <div class='cardContainer'>
+      <% profile.jobPosts.forEach(jobPost => { %>
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-header"><%= jobPost.companyName %></h5>
+          </div>
+
+          <div class="card-body-left">
+            <h5 class="card-company"><%= jobPost.role %></h5>
+            <p class="card-text">Sector: <%= jobPost.sector %></p>
+            <hr>
+            <% if (jobPost.contacts.length) { %>
+              <h5 class="card-title">Contacts:</h5>
+              <% jobPost.contacts.forEach(function(contact) { %>
+                <form 
+                  action="/jobPosts/<%= jobPost._id %>/contacts/<%= contact._id %>?_method=DELETE" 
+                  method="POST">
+                  <label><%= contact.name %></label> 
+                  <button 
+                  type="submit">X</button>
+                </form>
+              <% }) %>
+              <form action="/jobPosts/<%= jobPost._id %>/contacts"
+                method="POST">
+                <input 
+                  name="name"
+                  type="text"
+                  autocomplete="off"
+                  placeholder="Contact Name">
+                <button type="submit">Add Contact</button>
+              </form>
+            <% } else { %>
+              <h5>No Contacts Yet</h5>
+              <form action="/jobPosts/<%= jobPost._id %>/contacts"
+                method="POST">
+                <input 
+                name="name"
+                type="text"
+                placeholder="Contact Name">
+                <button type="submit">Add Contact</button>
+              </form>
+            <% } %>
+            <hr>
+            <h5 class="card-title">Application</h5>
+            <p>
+              Date Sent: 
+              <%= jobPost.applied ? jobPost.applied.toLocaleDateString() : 'Application Not Sent' %>
+            </p>
+            <hr>
+          </div>
+
+          <div class="card-body-right">
+            <p class="card-text">Salary Range: <%= jobPost.salaryRange %></p>
+            <% jobPost.reqLanguages.forEach((reqLanguage) => { %>
+            <p><%= reqLanguage.name %></p>
+              <% }); %>
+
+            <p class="card-text">Motivation: <%= jobPost.motivation %></p>
+            <p>Notes:</p>
+            <p class="card-text"><%= jobPost.notes %></p>
+          </div>
+
+          <div class="card-buttons">
+            <a 
+            role="button"
+            href="<%= jobPost.link %>"> 
+            <button class="nav-btn">Job Post Link</button>
+            </a>
+            <form 
+              action="/jobPosts/<%= jobPost._id %>?_method=DELETE"
+              method="POST"
               >
-              <button type="submit">Add Contact</button>
+              <button type="submit" class="delete-btn">Delete</button>
             </form>
-                <% jobPost.contacts.forEach(function(contact) { %>
-                  <form 
-                    action="/jobPosts/<%= jobPost._id %>/contacts/<%= contact._id %>?_method=DELETE" 
-                    method="POST">
-                    <label><%= contact.name %></label> 
-                    <button 
-                    type="submit">X</button>
-                  </form>
-                <% }) %>
-          <% } else { %>
-            <h5>No Contacts Yet</h5>
-            <form action="/jobPosts/<%= jobPost._id %>/contacts"
-              method="POST">
-              <input 
-              name="name"
-              type="text"
-              placeholder="Contact Name"
+            <form 
+              action="/jobPosts/<%= jobPost._id %>/edit"
               >
-              <button type="submit">Add Contact</button>
+              <button type="submit" class="edit-btn">Edit</button>
             </form>
-          <% } %>
-          <hr>
-          <h5 class="card-title">Application</h5>
-          <p>
-            Date Sent: 
-            <%= jobPost.applied ? jobPost.applied.toLocaleDateString() : 'Application Not Sent' %>
-          </p>
-          <label>
-          <p class="card-text">Salary Range: <%= jobPost.salaryRange %></p>
-
-          <%# languages required %> 
-          <% jobPost.reqLanguages.forEach((reqLanguage) => { %>
-          <p><%= reqLanguage.name %></p>
-            <% }); %>
-
-          <p class="card-text">Motivation: <%= jobPost.motivation %></p>
-          <p>Notes:</p>
-          <p class="card-text"><%= jobPost.notes %></p>
-
-          <a href="<%= jobPost.link %>" class="btn btn-primary">Job Post Link</a>
-          <form 
-            action="/jobPosts/<%= jobPost._id %>?_method=DELETE"
-            method="POST"
-            >
-            <button type="submit" class="btn btn-danger">Delete</button>
-          </form>
-          <form 
-            action="/jobPosts/<%= jobPost._id %>/edit"
-            >
-            <button type="submit" class="btn btn-secondary">Edit</button>
-          </form>
+          </div>
+          </div>
         </div>
-      </div>
-    <% }) %>
+      <% }) %>
+    </div>
     <% } else { %>
       <h3>No Job Posts Yet</h3>
     <% } %>

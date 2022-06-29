@@ -4,27 +4,27 @@
 </head>
 <body>
   <nav class="navbar">
-            <% if (user) { %>
-              <a 
-              role="button"
-              href="/jobPosts/new">
-                <button class="nav-btn">Add a Job Post</button> 
-              </a>
-            <% } %>
-            <% if (user) { %>
-              <a
-              role="button"
-              href="/languages/new"> 
-              <button class="nav-btn">Manage Languages</button>
-              </a>
-            <% } %>
-            <% if (user) { %>
-              <a 
-              role="button"
-              href="/profiles"> 
-              <button class="nav-btn">View Job Posts</button>
-              </a>
-            <% } %>
+    <% if (user) { %>
+      <a 
+      role="button"
+      href="/profiles"> 
+      <button class="nav-btn">View Job Posts</button>
+      </a>
+    <% } %>
+    <% if (user) { %>
+      <a 
+      role="button"
+      href="/jobPosts/new">
+        <button class="nav-btn">Add a Job Post</button> 
+      </a>
+    <% } %>
+    <% if (user) { %>
+      <a
+      role="button"
+      href="/languages/new"> 
+      <button class="nav-btn">Manage Languages</button>
+      </a>
+    <% } %>
     <% if (user) { %>
       <a href="/auth/logout">
         <button type="submit">Logout</button>

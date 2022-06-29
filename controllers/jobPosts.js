@@ -65,13 +65,11 @@ function deleteJobPost (req, res) {
 function edit(req, res) {
   Profile.findById(req.user.profile._id)
   .then(profile => {
-    console.log(profile)
-    Language.find({_id: {$in: profile.languages}})
-    .then(languages => {
-      JobPost.findById(req.params.id)
-      .populate('reqLanguages')
-      .then(jobPost => {
-        console.log(jobPost)
+    JobPost.findById(req.params.id)
+    .populate('reqLanguages')
+    .then(jobPost => {
+        Language.find({_id: {$nin: jobPost.reqLanguages}})
+        .then(languages => {
         res.render('jobPosts/edit', { 
           profile,
           languages,

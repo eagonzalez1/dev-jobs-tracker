@@ -21,7 +21,6 @@ function index(req, res) {
     .then(jobPosts => {
       jobPosts.forEach(jobPost => {
         jobPost.populate('reqLanguages.name')
-
       });
       res.render('profiles/index', {  
         profile,

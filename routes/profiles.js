@@ -7,7 +7,6 @@ const router = Router()
 // GET localhost:3000/jobPosts
 router.get('/', isLoggedIn, profilesCtrl.index)
 
-
 export {
   router
 }

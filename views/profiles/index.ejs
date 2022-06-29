@@ -46,7 +46,8 @@
           <hr>
           <h5 class="card-title">Application</h5>
           <p>
-            Date Sent: <%= jobPost.applied %>
+            Date Sent: 
+            <%= jobPost.applied ? jobPost.applied.toLocaleDateString() : 'Application Not Sent' %>
           </p>
           <label>
           <p class="card-text">Salary Range: <%= jobPost.salaryRange %></p>
@@ -55,8 +56,6 @@
           <% jobPost.reqLanguages.forEach((reqLanguage) => { %>
           <p><%= reqLanguage.name %></p>
             <% }); %>
-
-
 
           <p class="card-text">Motivation: <%= jobPost.motivation %></p>
           <p>Notes:</p>

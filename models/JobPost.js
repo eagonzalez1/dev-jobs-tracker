@@ -23,7 +23,7 @@ const jobPostSchema = new Schema({
   applied: Date,
   appReply: Boolean,
   contacts: [contactsSchema],
-  reqLanguages: [{type: Schema.Types.ObjectId, ref: "Languages"}]
+  reqLanguages: [{type: Schema.Types.ObjectId, ref: "Language"}]
 }, {
   timestamps: true
 })

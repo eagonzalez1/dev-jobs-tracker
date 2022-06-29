@@ -68,12 +68,27 @@
     
     <button type="submit">Edit Job Post</button>
   </form>
-  
-  <% languages.forEach(language => { %>
-    <p><%= language.name %></p>
-  <% }) %>
 
 
+    <% jobPost.reqLanguages.forEach(language => { %>
+      <p><%= language.name %></p>
+    <% }) %>
+
+
+
+  <form 
+    action="/jobPosts/<%= jobPost._id %>/reqLanguages"
+    method="POST">
+    <select name="languageId" id="">
+      <% languages.forEach(language => { %>
+        <option 
+          value="<%= language._id %>">
+          <%= language.name %> (<%= language.proficient ? 'proficient' : 'not proficient' %>)
+        </option>
+      <% }) %>
+    </select>
+    <button type="submit">Add to 'Languages Required'</button>
+  </form>
 
   </main>
 

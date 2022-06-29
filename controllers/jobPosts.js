@@ -69,8 +69,9 @@ function edit(req, res) {
     Language.find({_id: {$in: profile.languages}})
     .then(languages => {
       JobPost.findById(req.params.id)
+      .populate('reqLanguages')
       .then(jobPost => {
-        console.log(languages)
+        console.log(jobPost)
         res.render('jobPosts/edit', { 
           profile,
           languages,
@@ -85,29 +86,6 @@ function edit(req, res) {
     res.redirect('/profiles')
   })
 }
-
-// function edit(req, res) {
-//   Profile.findById(req.user.profile._id)
-//   .then(profile => {
-//     Language.find({})
-//     .then(languages => {
-//       console.log(languages)
-//       JobPost.findById(req.params.id)
-//       .then(jobPost => {
-//         res.render("jobPosts/edit", {
-//           profile,
-//           jobPost,
-//           languages,
-//           title: "Edit Job Post"
-//         })
-//       })
-//     })
-//   })
-//   .catch(err => {
-//     console.log(err)
-//     res.redirect('/profiles')
-//   })
-// }
 
 function update(req, res) {
   for (let key in req.body) {
@@ -124,6 +102,8 @@ function update(req, res) {
 }
 
 function createContact(req, res) {
+  console.log(req.params.id)
+  console.log(req.body)
   JobPost.findById(req.params.id)
   .then(jobPost => {
     jobPost.contacts.push(req.body)
@@ -155,6 +135,21 @@ function deleteContact(req, res) {
   })
 }
 
+function addLanguage(req, res) {
+  JobPost.findById(req.params.id)
+  .then(jobPost => {
+    jobPost.reqLanguages.push(req.body.languageId)
+    jobPost.save()
+    .then(() => {
+      res.redirect('/edit')
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect("/")
+  })
+}
+
 
 export {
   index,
@@ -164,5 +159,6 @@ export {
   edit,
   update,
   createContact,
-  deleteContact
+  deleteContact,
+  addLanguage
 }

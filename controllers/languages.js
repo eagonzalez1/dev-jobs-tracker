@@ -39,11 +39,15 @@ function index(req, res) {
 }
 
 function newLanguage(req, res) {
-  Language.find({})
-  .then(languages => {
-    res.render("languages/new", {
-      title: "Manage Languages",
-      languages
+  Profile.findById(req.user.profile._id)
+  .populate('languages')
+  .then(profile => {
+    Language.find({_id: {$in: profile.languages}})
+    .then(languages => {
+      res.render("languages/new", {
+        title: "Manage Languages",
+        languages
+      })
     })
   })
   .catch(err => {

@@ -19,6 +19,9 @@ router.post('/', isLoggedIn, jobPostCtrl.create)
 // POST localhost:3000/jobPosts/:id/contacts
 router.post('/:id/contacts', isLoggedIn, jobPostCtrl.createContact)
 
+// POST localhost:3000/jobPosts/:id/contacts
+router.post('/:id/reqLanguages', isLoggedIn, jobPostCtrl.addLanguage)
+
 // DELETE -- localhost:3000/:id
 router.delete('/:id', jobPostCtrl.delete)
 

@@ -141,7 +141,7 @@ function addLanguage(req, res) {
     jobPost.reqLanguages.push(req.body.languageId)
     jobPost.save()
     .then(() => {
-      res.redirect('/edit')
+      res.redirect(`/jobPosts/${jobPost._id}/edit`)
     })
   })
   .catch(err => {
@@ -150,6 +150,22 @@ function addLanguage(req, res) {
   })
 }
 
+function deleteLanguage(req, res) {
+  JobPost.findById(req.params.id)
+  .then(jobPost => {
+    jobPost.reqLanguages = jobPost.reqLanguages.filter(reqLanguage => {
+      return reqLanguage._id.toString() !== req.params.languageId
+    })
+    jobPost.save()
+    .then(() => {
+      res.redirect(`/jobPosts/${jobPost._id}/edit`)
+    })
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect("/")
+  })
+}
 
 export {
   index,
@@ -160,5 +176,6 @@ export {
   update,
   createContact,
   deleteContact,
-  addLanguage
+  addLanguage,
+  deleteLanguage
 }

@@ -71,7 +71,16 @@
 
 
     <% jobPost.reqLanguages.forEach(language => { %>
-      <p><%= language.name %></p>
+      
+      <form 
+      action="/jobPosts/<%= jobPost._id %>/reqLanguages/<%= language._id %>?_method=DELETE" 
+      method="POST">
+      <label><%= language.name %></label> 
+      <button 
+      type="submit">X</button>
+    </form>
+      
+
     <% }) %>
 
 

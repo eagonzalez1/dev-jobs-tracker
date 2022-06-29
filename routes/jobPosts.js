@@ -31,6 +31,9 @@ router.put('/:id', jobPostCtrl.update)
 // DELETE -- localhost:3000/:id
 router.delete('/:id/contacts/:contactId', jobPostCtrl.deleteContact)
 
+// DELETE -- localhost:3000/:id
+router.delete('/:id/reqLanguages/:languageId', jobPostCtrl.deleteLanguage)
+
 export {
   router
 }

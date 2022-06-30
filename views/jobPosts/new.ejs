@@ -1,26 +1,19 @@
 <%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/jobPosts/new.css" />
 <%- include('../partials/nav') %>
 
 <main>
-    <h2>Create a Job Post</h2>
-    <form action="/jobPosts" method="POST">
-      <label>
-        Company Name: 
-        <input type="text" name="companyName" autocomplete="off">
-      </label>
-      <label>
-        Role: 
-        <input type="text" name="role" autocomplete="off">
-      </label>
-      <label>
-        Sector: 
-        <input type="text" name="sector" autocomplete="off">
-      </label>
-      <label>
-        Salary Range: 
-        <input type="text" name="salaryRange" autocomplete="off">
-      </label>
-      <label>Motivation:</label>
+  <h2>Create a Job Post</h2>
+  <form action="/jobPosts" method="POST">
+    <label for="company-name">Company Name:</label>
+    <input id="company-name" type="text" name="companyName" autocomplete="off">
+    <label for="company-role">Role:</label>
+    <input id="company-role" type="text" name="role" autocomplete="off">
+    <label for="company-sector">Sector:</label>
+    <input id="company-sector" type="text" name="sector" autocomplete="off">
+    <label for="salary-range">Salary Range:</label>
+    <input id="salary-range" type="text" name="salaryRange" autocomplete="off">
+    <label>Motivation:</label>
       <select name="motivation" id="motivation-select">
         <option value="1">1</option>
         <option value="2">2</option>
@@ -28,37 +21,14 @@
         <option value="4">4</option>
         <option value="5">5</option>
       </select>
-      <label>
-        Job Post Link: 
-        <input type="text" name="link" autocomplete="off">
-      </label>
-      <label>
-        Notes: 
-        <input type="text" name="notes" autocomplete="off">
-      </label>
-      <label>
-        Applied?
-        <input 
-          type="checkbox" 
-          name="application"
-        >
-      </label>
-      <label>
-        Application Date
-        <input 
-          type="datetime-local" 
-          name="applied"
-        >
-      </label>
-      <label>
-        Replied?
-        <input 
-          type="checkbox" 
-          name="application"
-        >
-      </label>
-      <button type="submit">Add Job Post</button>
-    </form>
-  </main>
+    <label for="job-link">Job Post Link:</label>
+    <input id="job-link" type="text" name="link" autocomplete="off">
+    <label for="notes">Notes:</label>
+    <input id="notes" type="text" name="notes" autocomplete="off">
+    <label for="apply-date">Application Date</label>
+    <input id="apply-date" type="datetime-local" name="applied">
+    <button type="submit">Add Job Post</button>
+  </form>
+</main>
 
 <%- include('../partials/footer') %>

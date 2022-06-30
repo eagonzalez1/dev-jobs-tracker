@@ -1,5 +1,6 @@
 html {
   box-sizing: border-box;
+  height: 100%;
 }
 
 /* The Universal Selector */
@@ -16,8 +17,6 @@ html {
 
 }
 
-
-
 body {
   font-family: 'Gill Sans', 'Gill Sans MT', Calibri Light, 'Trebuchet MS', sans-serif;
   margin: 5px;
@@ -25,6 +24,9 @@ body {
   /* Use a system font, if none are available use an available sans-sarif font */
   background-size: cover;
   height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
 }
 
 nav {

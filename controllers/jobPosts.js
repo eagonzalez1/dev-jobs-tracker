@@ -64,11 +64,22 @@ function deleteJobPost (req, res) {
 
 function edit(req, res) {
   Profile.findById(req.user.profile._id)
+  .populate([
+    {
+      path: 'jobPosts',
+      populate: {
+        path: 'reqLanguages',
+      },
+    },
+    {
+      path: 'languages',
+    },
+  ])
   .then(profile => {
     JobPost.findById(req.params.id)
     .populate('reqLanguages')
     .then(jobPost => {
-        Language.find({_id: {$nin: jobPost.reqLanguages}})
+        Language.find({_id: {$in: profile.languages}})
         .then(languages => {
         res.render('jobPosts/edit', { 
           profile,
@@ -148,15 +159,32 @@ function addLanguage(req, res) {
   })
 }
 
-function deleteLanguage(req, res) {
-  JobPost.findById(req.params.id)
-  .then(jobPost => {
-    jobPost.reqLanguages = jobPost.reqLanguages.filter(reqLanguage => {
-      return reqLanguage._id.toString() !== req.params.languageId
-    })
-    jobPost.save()
-    .then(() => {
-      res.redirect(`/jobPosts/${jobPost._id}/edit`)
+function deleteReqLanguage(req, res) {
+  Profile.findById(req.user.profile._id)
+  .populate([
+    {
+      path: 'jobPosts',
+      populate: {
+        path: 'reqLanguages',
+      },
+    },
+    {
+      path: 'languages',
+    },
+  ])
+  .then(profile => {
+    JobPost.findById(req.params.id)
+    .populate('reqLanguages')
+      .then(jobPost => {
+      console.log(`first${jobPost}`)
+      jobPost.reqLanguages = jobPost.reqLanguages.filter(reqLanguage => {
+        return reqLanguage._id.toString() !== req.params.languageId
+      })
+      console.log(`second${jobPost}`)
+      jobPost.save()
+      .then(() => {
+        res.redirect(`/jobPosts/${jobPost._id}/edit`)
+      })
     })
   })
   .catch(err => {
@@ -175,5 +203,5 @@ export {
   createContact,
   deleteContact,
   addLanguage,
-  deleteLanguage
+  deleteReqLanguage
 }

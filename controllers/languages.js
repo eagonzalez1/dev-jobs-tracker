@@ -7,6 +7,7 @@ function newLanguage(req, res) {
   .then(profile => {
     Language.find({_id: {$in: profile.languages}})
     .then(languages => {
+      console.log(`SEE HERE ${profile.languages}`)
       res.render("languages/new", {
         title: "Manage Languages",
         languages
@@ -20,7 +21,6 @@ function newLanguage(req, res) {
 }
 
 function create(req, res) {
-  console.log(req.body)
 	req.body.proficient = !!req.body.proficient
   Language.create(req.body)
   .then(language => {
@@ -29,6 +29,17 @@ function create(req, res) {
       profile.languages.push(language._id)
       profile.save()
     })
+    res.redirect('/languages/new')
+  })
+  .catch(err => {
+    console.log(err)
+    res.redirect('/profiles')
+  })
+}
+
+function deleteLanguage(req, res) {
+  Language.findByIdAndDelete(req.params.id)
+  .then(() => {
     res.redirect('/languages/new')
   })
   .catch(err => {
@@ -55,6 +66,7 @@ function flipProficient(req, res) {
 export {
   newLanguage as new,
   create,
+  deleteLanguage as delete,
   flipProficient
 }
 

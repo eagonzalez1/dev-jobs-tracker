@@ -5,22 +5,29 @@
 	<h1><%= title %></h1>
   <form id="add-language-form" action="/languages" method="POST">
     <label for="name-input">Name:</label>
-    <input type="text" name="name" id="name-input">
+    <input type="text" name="name" id="name-input"><br>
     <label for="proficient-input">Proficient?</label>
-    <input type="checkbox" name="proficient" id="proficient-input" checked>
+    <input type="checkbox" name="proficient" id="proficient-input" checked><br>
     <button type="submit">Add language</button>
   </form>
   <h4>Languages:
-      <% languages.forEach(function(language) { %>
-        <p><%= language.name %> <%= language.proficient ? 'proficient' : 'not proficient' %></p>
+    <% languages.forEach(function(language) { %>
+      <section class="language-section">
+        <p><b><%= language.name %></b>
+          (<%= language.proficient ? 'proficient' : 'not proficient' %>)</p>
         <form 
-        action="/languages/<%= language._id %>/flip-proficient?_method=PATCH"
-        method="POST"
-      >
-        <button class="btn" type="submit">
+          action="/languages/<%= language._id %>/flip-proficient?_method=PATCH"
+          method="POST">
+          <button class="edit-btn" type="submit">
           Make <%= language.proficient ? 'not proficient' : 'proficient' %> 
-        </button>
-      </form>
+          </button>
+        </form>
+        <form 
+          action="/languages/<%= language._id %>?_method=DELETE"
+          method="POST">
+          <button class="delete-btn" type="submit">X</button>
+        </form>
+      </section>
       <% }) %>
       
 </main>

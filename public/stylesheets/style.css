@@ -71,7 +71,7 @@ h1 {
   padding: 10px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows: 10% 80% 10%;
+  grid-template-rows: 10% 70% 20%;
   grid-column-gap: 8px;
   grid-row-gap: 13px;
 }
@@ -95,6 +95,18 @@ h1 {
 
 h5 {
   margin: 0;
+  font-size: 16px;
+}
+
+.contact-input {
+  margin-bottom: 3px;
+}
+
+.delete-contact-btn {
+  background-color: rgb(227, 164, 164);
+  color: black;
+  border-radius: 8px;
+  margin-bottom: 5px;
 }
 
 .delete-btn {
@@ -111,8 +123,43 @@ h5 {
   margin-bottom: 5px;
 }
 
-#card-buttons {
+.card-body-right {
+  margin-left: 15px;
+}
+
+.language-list {
+  margin: 0;
+}
+
+.language-items-true {
+  display: inline;
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 14px;
+  color: green;
+}
+
+.language-items-false {
+  display: inline;
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 14px;
+  color: red;
+}
+
+.card-buttons {
   grid-column-end: span 2;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.language-section {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 @media only screen and (min-width: 576px) {

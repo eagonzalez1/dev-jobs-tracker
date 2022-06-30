@@ -10,6 +10,9 @@ router.get('/new', isLoggedIn, languagesCtrl.new)
 // localhost:3000/languages/new
 router.post('/', isLoggedIn, languagesCtrl.create)
 
+// DELETE -- localhost:3000/languages/:id
+router.delete('/:id', languagesCtrl.delete)
+
 // PATCH localhost:3000/languages/:id/flip-proficient
 router.patch('/:id/flip-proficient', isLoggedIn, languagesCtrl.flipProficient)
 

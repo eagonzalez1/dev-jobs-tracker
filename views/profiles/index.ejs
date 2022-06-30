@@ -13,7 +13,7 @@
 
           <div class="card-body-left">
             <h5 class="card-company"><%= jobPost.role %></h5>
-            <p class="card-text">Sector: <%= jobPost.sector %></p>
+            <p class="card-text"><b>Sector:</b> <%= jobPost.sector %></p>
             <hr>
             <% if (jobPost.contacts.length) { %>
               <h5 class="card-title">Contacts:</h5>
@@ -23,46 +23,44 @@
                   method="POST">
                   <label><%= contact.name %></label> 
                   <button 
-                  type="submit">X</button>
+                    type="submit"
+                    class="delete-contact-btn">
+                  X</button>
                 </form>
               <% }) %>
+              <% } else { %>
+                <h5>No Contacts Yet</h5>
+              <% } %>
               <form action="/jobPosts/<%= jobPost._id %>/contacts"
                 method="POST">
                 <input 
                   name="name"
                   type="text"
+                  class="contact-input"
                   autocomplete="off"
                   placeholder="Contact Name">
-                <button type="submit">Add Contact</button>
+                <button type="submit">Add</button>
               </form>
-            <% } else { %>
-              <h5>No Contacts Yet</h5>
-              <form action="/jobPosts/<%= jobPost._id %>/contacts"
-                method="POST">
-                <input 
-                name="name"
-                type="text"
-                placeholder="Contact Name">
-                <button type="submit">Add Contact</button>
-              </form>
-            <% } %>
             <hr>
             <h5 class="card-title">Application</h5>
             <p>
               Date Sent: 
               <%= jobPost.applied ? jobPost.applied.toLocaleDateString() : 'Application Not Sent' %>
             </p>
-            <hr>
           </div>
 
           <div class="card-body-right">
-            <p class="card-text">Salary Range: <%= jobPost.salaryRange %></p>
-            <% jobPost.reqLanguages.forEach((reqLanguage) => { %>
-            <p><%= reqLanguage.name %></p>
-              <% }); %>
-
-            <p class="card-text">Motivation: <%= jobPost.motivation %></p>
-            <p>Notes:</p>
+            <p class="card-text"><b>Salary Range:</b> <%= jobPost.salaryRange %></p>
+            <p class="card-text"><b>Motivation:</b> <%= jobPost.motivation %></p>
+            <h5 class="card-title">Skills Required:</h5>
+            <ul class="language-list">
+              <% jobPost.reqLanguages.forEach((reqLanguage) => { %>
+              <li class="language-items-<%= reqLanguage.proficient %>">
+                <%= reqLanguage.name %></li>
+                <% }); %>
+            </ul>
+            <hr>
+            <p><b>Notes:</b></p>
             <p class="card-text"><%= jobPost.notes %></p>
           </div>
 
@@ -73,24 +71,21 @@
             <button class="nav-btn">Job Post Link</button>
             </a>
             <form 
-              action="/jobPosts/<%= jobPost._id %>?_method=DELETE"
-              method="POST"
-              >
-              <button type="submit" class="delete-btn">Delete</button>
-            </form>
-            <form 
-              action="/jobPosts/<%= jobPost._id %>/edit"
-              >
+              action="/jobPosts/<%= jobPost._id %>/edit">
               <button type="submit" class="edit-btn">Edit</button>
             </form>
+            <form 
+              action="/jobPosts/<%= jobPost._id %>?_method=DELETE"
+              method="POST">
+              <button type="submit" class="delete-btn">Delete</button>
+            </form>
           </div>
           </div>
-        </div>
-      <% }) %>
-    </div>
-    <% } else { %>
-      <h3>No Job Posts Yet</h3>
-    <% } %>
+          <% }) %>
+          <% } else { %>
+            <h3>No Job Posts Yet</h3>
+            <% } %>
+          </div>
 </section>
 
 <%- include('../partials/footer') %>

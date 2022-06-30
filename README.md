@@ -4,13 +4,13 @@ This is an app to keep track of software-development jobs. It demonstrates the u
 </br>
 <img src="assets/../public/assets/images/devJobTracker-screenshot.png" alt="Website Screenshot.">
 <img src="assets/../public/assets/images/devJobTracker-rel-chart.png" alt="Website Screenshot.">
-</br>
-</br>
-## Links to view my webiste
-## Links to view my website
+</br></br>
+
+### Link to view my webiste</br>
 https://devjobstracker.herokuapp.com/</br>
-</br>
-##__Technologies used:__</br>
+</br></br>
+
+__Technologies used:__</br>
 HTML</br>
 CSS</br>
 JavaScript</br>
@@ -18,16 +18,16 @@ Node</br>
 Express</br>
 MongoDB</br>
 Mongoose</br>
-</br>
-</br>
+</br></br>
+
 __Credits:__</br>
 Bootstrap</br>
-</br>
-</br>
+</br></br>
+
 __Recent changes:__</br>
 Created App: 30 June 2022</br>
-</br>
-</br>
+</br></br>
+
 __Icebox Items:__</br>
 Create ability to sort</br>
 Add application tracker</br>

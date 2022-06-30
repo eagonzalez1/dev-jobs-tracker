@@ -7,9 +7,8 @@ function newLanguage(req, res) {
   .then(profile => {
     Language.find({_id: {$in: profile.languages}})
     .then(languages => {
-      console.log(`SEE HERE ${profile.languages}`)
       res.render("languages/new", {
-        title: "Manage Languages",
+        title: "Manage Skills and Languages",
         languages
       })
     })

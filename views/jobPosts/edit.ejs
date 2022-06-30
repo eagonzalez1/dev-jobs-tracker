@@ -2,7 +2,6 @@
 <%- include('../partials/nav') %>
 
 <main>
-
   <h1><%= title %></h1>
   <form id="new-form" action="/jobPosts/<%= jobPost._id %>?_method=PUT" method="POST">
     <label>
@@ -64,27 +63,17 @@
       autocomplete="off"
       value="<%= jobPost.notes %>">
     </label>
-
-    
     <button type="submit">Edit Job Post</button>
   </form>
-
-
-    <% jobPost.reqLanguages.forEach(language => { %>
-      
-      <form 
+  <% jobPost.reqLanguages.forEach(language => { %>
+    <form 
       action="/jobPosts/<%= jobPost._id %>/reqLanguages/<%= language._id %>?_method=DELETE" 
       method="POST">
       <label><%= language.name %></label> 
       <button 
       type="submit">X</button>
     </form>
-      
-
-    <% }) %>
-
-
-
+  <% }) %>
   <form 
     action="/jobPosts/<%= jobPost._id %>/reqLanguages"
     method="POST">
@@ -96,9 +85,9 @@
         </option>
       <% }) %>
     </select>
-    <button type="submit">Add to 'Languages Required'</button>
+    <br>
+    <button type="submit">Add to 'Skills/Languages Required'</button>
   </form>
-
   </main>
 
 <%- include('../partials/footer') %>

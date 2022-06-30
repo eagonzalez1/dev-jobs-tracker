@@ -4,14 +4,7 @@ import { Language } from '../models/language.js'
 
 
 function index(req, res) {
-  JobPost.find({})
-  .then(jobPosts => {
-    res.render('jobPosts/index', {
-      jobPosts,
-      title: "Job Posts",
-      user: req.user ? req.user : null
-    })
-  })
+  res.redirect('/profiles')
   .catch(err => {
     console.log(err)
     res.redirect("/")

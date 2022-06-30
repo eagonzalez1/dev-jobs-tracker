@@ -6,10 +6,11 @@ This is an app to keep track of software-development jobs. It demonstrates the u
 <img src="assets/../public/assets/images/devJobTracker-rel-chart.png" alt="Website Screenshot.">
 </br>
 </br>
-## Links to vew my website</br>
+## Links to view my webiste
+## Links to view my website
 https://devjobstracker.herokuapp.com/</br>
 </br>
-__Technologies used:__</br>
+##__Technologies used:__</br>
 HTML</br>
 CSS</br>
 JavaScript</br>

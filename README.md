@@ -2,7 +2,7 @@
 
 This is an app to keep track of software-development jobs. It also demonstrates........
 
-<img src="" alt="Website Screenshot.">
+<img src="/assets/images/devJobTracker-screenshot.png" alt="Website Screenshot.">
 
 Here's a link to the website:
 https://devjobstracker.herokuapp.com/

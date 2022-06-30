@@ -1,45 +1,23 @@
 <%- include('../partials/html-head') %>
+<link rel="stylesheet" href="/stylesheets/jobPosts/new.css" />
 <%- include('../partials/nav') %>
 
 <main>
   <h1><%= title %></h1>
   <form id="new-form" action="/jobPosts/<%= jobPost._id %>?_method=PUT" method="POST">
-    <label>
-      Company Name: 
-      <input type="text" 
-      name="companyName" 
-      autocomplete="off"
+    <label for="company-name">Company Name:</label>
+    <input id="company-name" type="text" name="companyName" autocomplete="off" 
       value="<%= jobPost.companyName %>">
-    </label>
-    <label>
-      Role: 
-      <input 
-      type="text" 
-      name="role" 
-      autocomplete="off"
+    <label for="company-role">Role:</label>
+    <input id="company-role" type="text" name="role" autocomplete="off"
       value="<%= jobPost.role %>">
-    </label>
-    <label>
-      Sector: 
-      <input type="text" 
-      name="sector" 
-      autocomplete="off"
+    <label for="company-sector">Sector:</label>
+    <input id="company-sector" type="text" name="sector" autocomplete="off"
       value="<%= jobPost.sector %>">
-    </label>
-    <label>
-      Salary Range: 
-      <input type="text" 
-      name="salaryRange" 
-      autocomplete="off"
+    <label for="salary-range">Salary Range:</label>
+    <input id="salary-range" type="text" name="salaryRange" autocomplete="off"
       value="<%= jobPost.salaryRange %>">
-    </label>
-    <label>
-      Job Post Link: 
-      <input type="text" 
-      name="link" 
-      autocomplete="off"
-      value="<%= jobPost.link %>">
-    </label>
+    <label>Motivation:</label>
     <select name="motivation" id="motivation-select">
       <option value="<%= jobPost.motivation %>" selected><%= jobPost.motivation %></option>
       <option value="1">1</option>
@@ -48,21 +26,15 @@
       <option value="4">4</option>
       <option value="5">5</option>
     </select>
-    <label>
-      Date Appplied: 
-      <input type="date" 
-      name="applied" 
-      autocomplete="off"
-      value="<%= jobPost.applied %>">
-    </label>
-    <label>
-      Notes: 
-      <input 
-      type="text" 
-      name="notes" 
-      autocomplete="off"
+    <label for="job-link">Job Post Link:</label>
+    <input id="job-link" type="text" name="link" autocomplete="off"
+      value="<%= jobPost.link %>">
+    <label for="notes">Notes:</label>
+    <input id="notes" type="text" name="notes" autocomplete="off"
       value="<%= jobPost.notes %>">
-    </label>
+    <label for="apply-date">Application Date</label>
+    <input id="apply-date" type="date" name="applied" 
+      autocomplete="off" value="<%= jobPost.applied %>">
     <button type="submit">Edit Job Post</button>
   </form>
   <% jobPost.reqLanguages.forEach(language => { %>
@@ -70,16 +42,15 @@
       action="/jobPosts/<%= jobPost._id %>/reqLanguages/<%= language._id %>?_method=DELETE" 
       method="POST">
       <label><%= language.name %></label> 
-      <button 
-      type="submit">X</button>
+      <button class="delete-btn" type="submit">X</button>
     </form>
   <% }) %>
   <form 
     action="/jobPosts/<%= jobPost._id %>/reqLanguages"
     method="POST">
-    <select name="languageId" id="">
+    <select class="language-select" name="languageId">
       <% profile.languages.forEach(language => { %>
-        <option 
+        <option
           value="<%= language._id %>">
           <%= language.name %> (<%= language.proficient ? 'proficient' : 'not proficient' %>)
         </option>

@@ -1,32 +1,33 @@
-# DEV-JOBS-TRACKER
-
+# DEV-JOBS-TRACKER</br>
+</br>
 This is an app to keep track of software-development jobs. It also demonstrates........
-
+</br>
 <img src="/images/devJobTracker-screenshot.png" alt="Website Screenshot.">
-![website screenshot](assets/images/../../public/assets/images/devJobTracker-screenshot.png)
-
-Here's a link to the website:
-https://devjobstracker.herokuapp.com/
-
-<img src="/assets/images/devJobTracker-screenshot.png"
-     alt="Website Screenshot"
-     style="float: left; margin-right: 10px;" />
-
-## Links to vew my website
-
-__Technologies used:__
-
-
-
-__Credits:__
-
-
-
-__Recent changes:__
-
-
-
-__Icebox Items:__
-
-
-
+![website screenshot](images/devJobTracker-screenshot.png)
+</br>
+</br>
+## Links to vew my website</br>
+https://devjobstracker.herokuapp.com/</br>
+</br>
+__Technologies used:__</br>
+HTML</br>
+CSS</br>
+JavaScript</br>
+Node</br>
+Express</br>
+MongoDB</br>
+Mongoose</br>
+</br>
+</br>
+__Credits:__</br>
+Bootstrap</br>
+</br>
+</br>
+__Recent changes:__</br>
+Created app: 30 June 2022</br>
+</br>
+</br>
+__Icebox Items:__</br>
+Create ability to sort</br>
+Add application tracker</br>
+Ability to make more changes on Job Posts page</br>

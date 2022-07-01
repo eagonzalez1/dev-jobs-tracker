@@ -10,18 +10,21 @@ This is an app to keep track of software-development jobs. It demonstrates the u
 https://devjobstracker.herokuapp.com/</br>
 </br></br>
 
-__Technologies used:__</br>
-HTML</br>
-CSS</br>
-JavaScript</br>
-Node</br>
-Express</br>
-MongoDB</br>
-Mongoose</br>
+__Technologies used:__
+</br>
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+</br>
+![NodeJS](https://img.shields.io/badge/node.js-6DA55F?style=for-the-badge&logo=node.js&logoColor=white)
+</br>
+![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB)
+</br>
+![MongoDB](https://img.shields.io/badge/MongoDB-%234ea94b.svg?style=for-the-badge&logo=mongodb&logoColor=white)
+</br>
 </br></br>
 
 __Credits:__</br>
-Bootstrap</br>
+![Bootstrap](https://img.shields.io/badge/bootstrap-%23563D7C.svg?style=for-the-badge&logo=bootstrap&logoColor=white)
+</br>
 </br></br>
 
 __Recent changes:__</br>
